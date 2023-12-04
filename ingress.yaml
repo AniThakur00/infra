@@ -6,7 +6,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: project/auth/*
+      - path: project/auth/
         pathType: ImplementationSpecific
         backend:
           service:
@@ -14,7 +14,7 @@ spec:
             port:
               number: 3001
 
-      - path: project/product/*
+      - path: project/product/
         pathType: ImplementationSpecific
         backend:
           service:
