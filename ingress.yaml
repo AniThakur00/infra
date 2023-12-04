@@ -12,7 +12,7 @@ spec:
           service:
             name: auth-service
             port:
-              number: 3001
+              number: 80
 
       - path: /project/product/*
         pathType: ImplementationSpecific
@@ -20,4 +20,4 @@ spec:
           service:
             name: product-service
             port:
-              number: 3000
+              number: 80
