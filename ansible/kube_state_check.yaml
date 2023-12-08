@@ -12,12 +12,12 @@
       include_vars:
         file: "gke_auth_json.yml"
 
-    - name: Ensure the default Namespace exists.
-      kubernetes.core.k8s:
-        api_version: v1
-        kind: Namespace
-        name: default
-        state: present
+    # - name: Ensure the default Namespace exists.
+    #   kubernetes.core.k8s:
+    #     api_version: v1
+    #     kind: Namespace
+    #     name: default
+    #     state: present
 
     - name: Get Pod Names in Kubernetes Cluster
       command: "kubectl get pods --output=jsonpath='{.items[*].metadata.name}'"
@@ -27,28 +27,28 @@
       debug:
         var: pod_names_output.stdout_lines
 
-    - name: Ensure the auth-service Service exists in the default Namespace.
-      kubernetes.core.k8s:
-        state: present
-        definition:
-          apiVersion: v1
-          kind: Service
-          metadata:
-            name:  auth-service
-            namespace: default
-          spec:
-            selector:
-              app: auth
-            ports:
-              - protocol: TCP
-                port: 80
-                targetPort: 3001
-            type: NodePort
+    # - name: Ensure the auth-service Service exists in the default Namespace.
+    #   kubernetes.core.k8s:
+    #     state: present
+    #     definition:
+    #       apiVersion: v1
+    #       kind: Service
+    #       metadata:
+    #         name:  auth-service
+    #         namespace: default
+    #       spec:
+    #         selector:
+    #           app: auth
+    #         ports:
+    #           - protocol: TCP
+    #             port: 80
+    #             targetPort: 3001
+    #         type: NodePort
 
-    - name: Get Service Names in Kubernetes Cluster
-      command: "kubectl get svc --output=jsonpath='{.items[*].metadata.name}'"
-      register: myapp_services
+    # - name: Get Service Names in Kubernetes Cluster
+    #   command: "kubectl get svc --output=jsonpath='{.items[*].metadata.name}'"
+    #   register: myapp_services
 
-    - name: Display name of Services in the default namespace.
-      debug:
-        var: myapp_services.stdout_lines
+    # - name: Display name of Services in the default namespace.
+    #   debug:
+    #     var: myapp_services.stdout_lines
