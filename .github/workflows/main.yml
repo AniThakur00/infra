@@ -24,6 +24,15 @@ jobs:
       - name: Set Kubectl Context
         run: gcloud container clusters get-credentials testing --zone us-central1 --project project-1-400619
 
+      - name: Install Ansible
+        run: |
+          python -m pip install --upgrade pip
+          pip install ansible
+
+      - name: Run Ansible Playbook
+        run: |
+          ansible-playbook ansible/kube_state_check.yaml
+
       - name: Create ingress Service
         run: |
           kubectl apply -f ingress.yaml
