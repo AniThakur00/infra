@@ -32,7 +32,7 @@ jobs:
       - name: Install Ansible
         run: |
           python -m pip install --upgrade pip
-          pip install ansible kubernates
+          pip install ansible kubernetes
 
       - name: Run Ansible Playbook
         run: |
