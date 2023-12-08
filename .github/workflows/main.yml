@@ -36,7 +36,7 @@ jobs:
 
       - name: Run Ansible Playbook
         run: |
-          ansible-playbook ansible/kube_state_check.yaml
+          ansible-playbook -i localhost, -e "ansible_python_interpreter=$(which python)" ansible/kube_state_check.yaml
 
       - name: Create ingress Service
         run: |
