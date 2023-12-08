@@ -6,7 +6,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /auth
+      - path: /auth/*
         pathType: ImplementationSpecific
         backend:
           service:
@@ -14,7 +14,7 @@ spec:
             port:
               number: 80
 
-      - path: /
+      - path: /*
         pathType: ImplementationSpecific
         backend:
           service:
