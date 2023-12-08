@@ -4,20 +4,20 @@ metadata:
   name: all-micro-ingress
 spec:
   rules:
-  - http:
-      paths:
-      - path: /auth/*
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: auth-service
-            port:
-              number: 80
+    - http:
+        paths:
+          - path: /auth/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: auth-service
+                port:
+                  number: 80
 
-      - path: /*
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: product-service
-            port:
-              number: 80
+          - path: /product/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: product-service
+                port:
+                  number: 80
